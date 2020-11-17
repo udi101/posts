@@ -1,0 +1,15 @@
+<div *ngFor="let postsKeyValue of postsByUserId | keyvalue">
+  <h2 class="posts__owner">All posts of userID: {{postsKeyValue.key}} </h2>
+  <div class="posts">
+    <div class="post" *ngFor="let post of postsKeyValue.value">
+      <div class="post__title mat-body-2">
+        {{post?.title}}
+      </div>
+      <div class="post__data">
+        <div class="post__data__id">Post id: {{post?.id}}</div>
+        <div class="post__data__userId">User Id: {{post?.userId}}</div>
+        <div class="post__data__body">{{post?.body}}</div>
+      </div>
+    </div>
+  </div>
+</div>
