@@ -1,10 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { IPost } from '@app/posts/interfaces/post.interface';
 
 @Component({
   selector: 'posts-display',
   templateUrl: './posts-display.component.html',
-  styleUrls: ['./posts-display.component.scss']
+  styleUrls: ['./posts-display.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class PostsDisplayComponent implements OnInit {
 

@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { IPost } from '../interfaces/post.interface';
 import { HttpClient } from '@angular/common/http';
-import { Observable, timer, of, Subject } from 'rxjs';
-import { catchError, switchMap, takeUntil } from 'rxjs/operators';
+import { Observable, timer, of, Subject, throwError } from 'rxjs';
+import { catchError, delay, retryWhen, switchMap, takeUntil, scan, retry } from 'rxjs/operators';
+import { error } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,19 @@ export class PostsService {
   }
 
   getPosts(): Observable<Array<IPost>> {
-    return this.httpClient.get<Array<IPost>>('https://jsonplaceholder.typicode.com/posts');
+    return this.httpClient.get<Array<IPost>>('https://jsonplaceholder.typicode.com/posts').pipe(
+      retryWhen((err) => err.pipe(
+        scan((retryCount) => {
+          if (retryCount < 3) {
+            retryCount++;
+            return retryCount;
+          } else {
+            throw err;
+          }
+        }, 1),
+        delay(2000)
+      ))
+    )
   }
 
   // Get the posts every 60 secs

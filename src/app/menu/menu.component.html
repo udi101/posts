@@ -3,9 +3,14 @@
     <div class="menu__items">
       <div class="mat-body-2 menu__items__item" [routerLink]="['/']">Home</div>
 
-      <div class="mat-body-2 menu__items__item" [routerLink]="['/Posts']"
-      routerLinkActive="router-link-active" >Posts
-    </div>
+      <div class="mat-body-2 menu__items__item" routerLinkActive="router-link-active"
+        [mat-menu-trigger-for]="postsMenu">Posts
+      </div>
+      <mat-menu #postsMenu>
+        <button mat-menu-item class="primary-color" [routerLink]="['/posts']"
+          routerLinkActive="router-link-active">Posts By UserId</button>
+        <button mat-menu-item class="primary-color" [routerLink]="['/posts','dialogs']">Posts Dialogs</button>
+      </mat-menu>
     </div>
   </div>
 </mat-toolbar>

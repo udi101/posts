@@ -10,26 +10,6 @@
   }
 }
 
-.post {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  display: grid;
-  grid-template-rows: auto 1fr;
-  border-radius: 6px;
-
-  &__title {
-    background-color: #ccc;
-    padding: 8px;
-    border-radius: 4px 4px 0 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  &__data {
-    padding: 12px;
-  }
-}
-
 
 .posts {
   display: grid;
