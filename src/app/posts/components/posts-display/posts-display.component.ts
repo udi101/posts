@@ -29,7 +29,6 @@ export class PostsDisplayComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.usersIds);
   }
 
   getPostsById(id: number): Array<IPost> {

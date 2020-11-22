@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { SharedModule } from './shared/shared.module';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoggerService } from 'projects/logger/src/public-api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,8 +18,11 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule
+
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoggerService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

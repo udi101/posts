@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { IPost } from './interfaces/post.interface';
 
 import { PostsService } from './services/posts.service';

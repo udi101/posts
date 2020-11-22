@@ -3,7 +3,13 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@app/*": ["src/app/*"]
+      "@app/*": [
+        "src/app/*"
+      ],
+      "logger": [
+        "dist/logger/logger",
+        "dist/logger"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
